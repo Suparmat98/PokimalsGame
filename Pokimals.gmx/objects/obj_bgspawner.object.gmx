@@ -29,6 +29,12 @@
 spawnbg = true;
 coordx = 0;
 coordy = 0;
+row = 0;
+
+room_speed = 999;
+
+instance_create(0,0,obj_black);
+instance_create((room_width-593)/2,room_height/4,obj_title);
 </string>
           </argument>
         </arguments>
@@ -63,7 +69,8 @@ if (spawnbg == true)
     
     if (coordx == room_width &amp;&amp; coordy == room_height-8)
     {
-        spawnbg = false;   
+        spawnbg = false;
+        instance_create(room_width/3,room_height-80,obj_presstoplay);
     }
     
     if (coordx == room_width)
@@ -71,7 +78,11 @@ if (spawnbg == true)
         //resetting the x
         coordx = 0;
         //moving the y 1 tile down
-        coordy += 8;   
+        coordy += 8;
+        
+        instance_create(128+(row*8),room_height-room_height/3,obj_loadbar);
+        
+        row += 1;
     }
 }
 </string>
